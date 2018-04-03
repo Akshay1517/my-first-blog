@@ -5,18 +5,16 @@
     <body>
         <div>
             <h1><a href="/">Django Blog</a></h1>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Django uses the Python 2/3 Compatible Source strategy. Of course, you're free to chose another strategy for your own code, especially if you don't need to stay compatible with Python 2. But authors of pluggable applications are encouraged to use the same porting strategy as Django itself.</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>[How to] Download and Install Lineage OS 15.1 on LG L70 Dual (Android 8.1 Oreo)</p>
+            {% for post in posts %}
+                {{ post }}
+                {% endfor %}
+{% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
         </div>
     </body>
 </html>
